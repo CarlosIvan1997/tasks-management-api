@@ -14,33 +14,49 @@ export class DynamoDBService {
       : new AWS.DynamoDB.DocumentClient();
   }
 
-  async scan(input: AWS.DynamoDB.DocumentClient.ScanInput) {
+  async scan(
+    input: AWS.DynamoDB.DocumentClient.ScanInput,
+  ): Promise<Record<string, unknown>> {
     try {
-      return await this.dynamoDBClient.scan(input).promise();
+      return (await this.dynamoDBClient
+        .scan(input)
+        .promise()) as unknown as Record<string, unknown>;
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
   }
 
-  async get(input: AWS.DynamoDB.DocumentClient.GetItemInput) {
+  async get(
+    input: AWS.DynamoDB.DocumentClient.GetItemInput,
+  ): Promise<Record<string, unknown>> {
     try {
-      return await this.dynamoDBClient.get(input).promise();
+      return (await this.dynamoDBClient
+        .get(input)
+        .promise()) as unknown as Record<string, unknown>;
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
   }
 
-  async put(input: AWS.DynamoDB.DocumentClient.PutItemInput) {
+  async put(
+    input: AWS.DynamoDB.DocumentClient.PutItemInput,
+  ): Promise<Record<string, unknown>> {
     try {
-      return await this.dynamoDBClient.put(input).promise();
+      return (await this.dynamoDBClient
+        .put(input)
+        .promise()) as unknown as Record<string, unknown>;
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
   }
 
-  async update(input: AWS.DynamoDB.DocumentClient.UpdateItemInput) {
+  async update(
+    input: AWS.DynamoDB.DocumentClient.UpdateItemInput,
+  ): Promise<Record<string, unknown>> {
     try {
-      return await this.dynamoDBClient.update(input).promise();
+      return (await this.dynamoDBClient
+        .update(input)
+        .promise()) as unknown as Record<string, unknown>;
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
