@@ -13,7 +13,11 @@ functions:
     events:
       - http:
           method: any
-          path: /{any+}
+          path: /{proxy+}
+          cors: true
+      - http:
+          method: any
+          path: /
           cors: true
 
 provider:
