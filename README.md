@@ -1,73 +1,88 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Tasks Management API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### Description
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This is a Tasks Management API built with NestJS, Serverless Framework and DynamoDB.
 
-## Description
+### Instructions to deploy
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+2. Set up AWS credentials
 
-## Installation
+```bash
+$ aws configure
+```
+
+> | Access Key ID   | Secret Access Key   | Default region name | Default output format |
+> | --------------- | ------------------- | ------------------- | --------------------- |
+> | <ACCESS_KEY_ID> | <SECRET_ACCESS_KEY> | us-east-1           | json                  |
+
+3. Install [Node.js](https://nodejs.org/en/)
+4. Install [Serverless Framework](https://www.serverless.com/framework/docs/getting-started)
+
+```bash
+$ sudo npm install -g serverless
+```
+
+5. Clone [Tasks Management API Project](https://github.com/CarlosIvan1997/tasks-management-api)
+
+```bash
+$ git clone https://github.com/CarlosIvan1997/tasks-management-api.git
+```
+
+6. Go to Project Folder
+
+```bash
+$ cd tasks-management-api
+```
+
+7. Install dependencies
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+8. Install Serverless plugins
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ serverless plugin install -n serverless-plugin-optimize
+$ serverless plugin install -n serverless-dynamodb-local
+$ serverless plugin install -n serverless-offline
+$ serverless dynamodb install
 ```
 
-## Test
+9. Deploy Tasks Management API
+
+```bash
+$ npm run build && serverless deploy
+```
+
+Once the deployment is completed, you should see the following output:
+
+```bash
+✔ Service deployed to stack tasks-management-api-dev
+
+endpoints:
+  ANY - https://vfahyfhidh.execute-api.us-east-2.amazonaws.com/dev/{proxy+}
+  ANY - https://vfahyfhidh.execute-api.us-east-2.amazonaws.com/dev/
+functions:
+  app: tasks-management-api-dev-app
+```
+
+Now you can go and test the app with [Postman](https://www.postman.com/downloads/)
+
+10. Remove Tasks Management API
+
+```bash
+$ serverless remove
+```
+
+### Test
 
 ```bash
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
