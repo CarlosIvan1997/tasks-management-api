@@ -1,7 +1,5 @@
 # Tasks Management API
 
----
-
 ### Description
 
 This is a Tasks Management API built with [NestJS](https://nestjs.com/), [Serverless Framework](https://www.serverless.com/) and [DynamoDB](https://aws.amazon.com/dynamodb/).
@@ -109,6 +107,8 @@ class Task {
 }
 ```
 
+---
+
 #### Creating a new Task
 
 Create a new Task given name and description.
@@ -126,11 +126,13 @@ Create a new Task given name and description.
 
 ##### Responses
 
-> | http code | content-type                      | response                                                               |
-> | --------- | --------------------------------- | ---------------------------------------------------------------------- |
-> | `201`     | `application/json; charset=utf-8` | `Task`                                                                 |
-> | `400`     | `application/json; charset=utf-8` | `{"statusCode":400,"message":"Error message", "error": "Bad Request"}` |
-> | `500`     | `application/json; charset=utf-8` | `{"message":"Error message"}`                                          |
+> | http code | response                                                               |
+> | --------- | ---------------------------------------------------------------------- |
+> | `201`     | `Task`                                                                 |
+> | `400`     | `{"statusCode":400,"message":"Error message", "error": "Bad Request"}` |
+> | `500`     | `{"message":"Error message"}`                                          |
+
+---
 
 #### Getting Tasks
 
@@ -142,10 +144,12 @@ Get all Tasks.
 
 ##### Responses
 
-> | http code | content-type                      | response                      |
-> | --------- | --------------------------------- | ----------------------------- |
-> | `200`     | `application/json; charset=utf-8` | `[Task]`                      |
-> | `500`     | `application/json; charset=utf-8` | `{"message":"Error message"}` |
+> | http code | response                      |
+> | --------- | ----------------------------- |
+> | `200`     | `[Task]`                      |
+> | `500`     | `{"message":"Error message"}` |
+
+---
 
 #### Getting one Task
 
@@ -157,8 +161,8 @@ Get one Task given an ID.
 
 ##### Responses
 
-> | http code | content-type                      | response                                                                      |
-> | --------- | --------------------------------- | ----------------------------------------------------------------------------- |
-> | `200`     | `application/json; charset=utf-8` | `Task`                                                                        |
-> | `404`     | `application/json; charset=utf-8` | `{"statusCode":404,"message":"Task with ID not found", "error": "Not Found"}` |
-> | `500`     | `application/json; charset=utf-8` | `{"message":"Error message"}`                                                 |
+> | http code | response                                                                      |
+> | --------- | ----------------------------------------------------------------------------- |
+> | `200`     | `Task`                                                                        |
+> | `404`     | `{"statusCode":404,"message":"Task with ID not found", "error": "Not Found"}` |
+> | `500`     | `{"message":"Error message"}`                                                 |
