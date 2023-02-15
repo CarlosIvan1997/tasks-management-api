@@ -2,7 +2,7 @@
 
 ### Description
 
-This is a Tasks Management API built with NestJS, Serverless Framework and DynamoDB.
+This is a Tasks Management API built with [NestJS](https://nestjs.com/), [Serverless Framework](https://www.serverless.com/) and [DynamoDB](https://aws.amazon.com/dynamodb/).
 
 ### Instructions to deploy
 
