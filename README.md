@@ -99,11 +99,11 @@ This is a Tasks Management API, a Task is defined as the following:
 
 ```ts
 class Task {
-  id: string;
-  name: string;
-  description: string;
-  isCompleted: boolean;
-  isDeleted: boolean;
+  id: string; // Unique identifier of a Task
+  name: string; // Name of a Task
+  description: string; // Description of a Task
+  isCompleted: boolean; // Describes if a Task has been completed or not
+  isDeleted: boolean; // Describes if a Task has been deleted or not
 }
 ```
 
@@ -111,7 +111,7 @@ class Task {
 
 #### Creating a new Task
 
-Create a new Task given name and description.
+Create a new Task given `name` and `description`.
 
 **URL** : `/tasks`
 
@@ -153,16 +153,79 @@ Get all Tasks.
 
 #### Getting one Task
 
-Get one Task given an ID.
+Get one Task given an `ID`.
 
-**URL** : `/tasks/:id`
+**URL** : `/tasks/{id}`
 
 **Method** : `GET`
+
+##### Path Parameters
+
+> | name | type     | data type |
+> | ---- | -------- | --------- |
+> | id   | required | string    |
 
 ##### Responses
 
 > | http code | response                                                                      |
 > | --------- | ----------------------------------------------------------------------------- |
 > | `200`     | `Task`                                                                        |
+> | `404`     | `{"statusCode":404,"message":"Task with ID not found", "error": "Not Found"}` |
+> | `500`     | `{"message":"Error message"}`                                                 |
+
+---
+
+#### Updating one Task
+
+Update one Task given an `ID`, you could only update `name`, `description`, and `isCompleted` values.
+
+**URL** : `/tasks/{id}`
+
+**Method** : `PATCH`
+
+##### Path Parameters
+
+> | name | type     | data type |
+> | ---- | -------- | --------- |
+> | id   | required | string    |
+
+##### Body
+
+> | name        | type     | data type |
+> | ----------- | -------- | --------- |
+> | name        | optional | string    |
+> | description | optional | string    |
+> | isCompleted | optional | boolean   |
+
+##### Responses
+
+> | http code | response                                                                      |
+> | --------- | ----------------------------------------------------------------------------- |
+> | `200`     | `Task`                                                                        |
+> | `400`     | `{"statusCode":400,"message":"Error message", "error": "Bad Request"}`        |
+> | `404`     | `{"statusCode":404,"message":"Task with ID not found", "error": "Not Found"}` |
+> | `500`     | `{"message":"Error message"}`                                                 |
+
+---
+
+#### Removing one Task
+
+Remove one Task given an `ID`, it sets `isDeleted` value to true. We are doing a logical deletion.
+
+**URL** : `/tasks/{id}`
+
+**Method** : `DELETE`
+
+##### Path Parameters
+
+> | name | type     | data type |
+> | ---- | -------- | --------- |
+> | id   | required | string    |
+
+##### Responses
+
+> | http code | response                                                                      |
+> | --------- | ----------------------------------------------------------------------------- |
+> | `200`     | `{"message": "Task with ID has been removed"}`                                |
 > | `404`     | `{"statusCode":404,"message":"Task with ID not found", "error": "Not Found"}` |
 > | `500`     | `{"message":"Error message"}`                                                 |
